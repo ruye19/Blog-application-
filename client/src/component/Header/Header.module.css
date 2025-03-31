@@ -1,0 +1,121 @@
+/* General Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    height: 15vh;
+    position: relative; /* Ensure header content doesn't get hidden */
+    z-index: 1;
+}
+
+.header_logo {
+    display: flex;
+    justify-content: center;
+    margin-right: 300px;
+    z-index: 2; /* Ensure logo stays above the dropdown */
+}
+
+.header_logo img {
+    width: 150px;
+    height: auto;
+}
+
+.header_links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header_links a {
+    text-decoration: none;
+    color: rgb(105, 102, 102);
+    font-weight: 200;
+}
+
+h6 {
+    font-size: 16px;
+    font-weight: 100;
+    margin: 0;
+}
+
+.header_links_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_links_img img {
+    width: 120px;
+    height: auto;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        height: auto; /* Allow the header to grow in height */
+        position: relative;
+    }
+
+    .header_logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .header_links {
+        display: none;
+        width: 0; /* Set to 0 initially for a thin box */
+        height: 100vh; /* Take full height of the screen */
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px; /* Adjust this value to avoid overlap with logo */
+        left: 0;
+        right: 0;
+        background-color: white;
+        z-index: 0;
+        overflow: hidden;
+        transition: width 0.3s ease; /* Add smooth transition for dropdown */
+    }
+
+    .header_links.active {
+        display: flex;
+        width: 200px; /* Set the width of the dropdown (thin box) */
+        overflow-y: auto;
+    }
+
+    .header_links a {
+        font-size: 18px;
+        padding: 10px;
+        border-bottom: 1px solid #ddd; /* Optional border for separation */
+    }
+
+    .header_toggle {
+        display: block;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .header_toggle div {
+        width: 25px;
+        height: 3px;
+        background-color: rgb(105, 102, 102);
+        margin: 5px 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .header_links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header_toggle {
+        display: none;
+    }
+}
+

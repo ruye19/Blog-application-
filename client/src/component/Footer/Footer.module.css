@@ -1,0 +1,33 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: lightblue; /* White background color */
+    color: black; /* Black text color */
+    text-align: center;
+}
+
+.footer p {
+    font-size: 15px;
+    font-weight: 300; /* Unbolded text */
+    margin: 0;
+}
+
+.footer_links {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.footer_links a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: 300; /* Unbolded links */
+}
+
+.footer_links a:hover {
+    color: #555; /* Change color on hover */
+}
