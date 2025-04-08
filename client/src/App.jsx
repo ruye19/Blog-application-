@@ -3,8 +3,8 @@ import Login from './pages/login/Login'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Register from './pages/Register/Register'
-import Write from "./pages/Write"
-import Single from './pages/Single'
+import Write from "./pages/Write/Write"
+import Single from './pages/Single/Single'
 import Layout from './component/Layout'
 
 const App = () => {

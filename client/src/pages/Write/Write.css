@@ -1,0 +1,59 @@
+
+.write__write{
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+
+}
+.content__write{
+    flex:5;
+   
+
+}
+.menu__write{
+    flex: 2;
+    flex-direction: column;
+    gap: 20px;
+    display: flex;
+}
+.menu__write span{
+    margin: 8px;
+}
+.button__write{
+    display: flex;
+    gap: 12px;
+}
+.button__write button{
+    margin: 0;
+    margin-top: 8px;
+    
+}
+.write__write hr{
+    margin: 0;
+}
+.item{
+    border: 1px solid black;
+    padding: 12px;
+}
+.catag{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color:lightblue;
+    margin-bottom:4px ;
+}
+.content__write input{
+    padding: 7px;
+    margin-bottom: 12px;
+    width: 95.7%;
+}
+.editorContainer{
+    height: 300px;
+    overflow: scroll;
+}
+.editor{
+    height: 100%;
+}
+.menu__write{
+    margin: 12px;
+}

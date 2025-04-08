@@ -35,7 +35,7 @@ const Header = () => {
         <Link to="/"><h6>FOOD</h6></Link>
         <Link to="/"><h6>Ruth</h6></Link>
         <Link to="/">Logout</Link>
-        <Link to="/" className={classes.header_links_img}>
+        <Link to="/write" className={classes.header_links_img}>
           <img src={write} alt="write blog" />
         </Link>
       </div>

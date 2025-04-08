@@ -1,0 +1,78 @@
+.menu{
+    flex: 1;
+
+}
+.content{
+    flex: 3;
+}
+.single{
+    display: flex;
+    gap: 20px;
+    margin: 40px;
+     margin-top: 20px;
+}
+.user img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+.content_img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+.user{
+    display:flex;
+    gap: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 2px;
+}
+.user__date{
+    margin: 0;
+    color: gray;
+}
+.edit_delete {
+    display: flex;
+    gap: 15px; /* Space between icons */
+    margin-left: auto; /* Push to the right side */
+  }
+  
+  .edit_delete a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: #555; /* Default color */
+    transition: all 0.3s ease;
+  }
+  
+  .edit_delete a:hover {
+    color: #007bff; /* Blue on hover for edit */
+  }
+  
+  .edit_delete a:last-child:hover {
+    color: #dc3545; /* Red on hover for delete */
+  }
+  
+  .bothcorrect {
+    display: flex;
+    gap: 15px;
+  }
+  .user_info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Space between name, date, and description */
+  }
+  
+  .user__description {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    font-weight: 400;
+    max-width: 600px; /* Prevent overly long lines */
+  }
