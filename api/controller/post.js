@@ -1,3 +1,3 @@
 export const addpost = (req,res)=>{
-    res.json("yeah noice")
+    res.json("yeah arif ")
 }
