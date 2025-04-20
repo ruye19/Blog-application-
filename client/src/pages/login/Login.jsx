@@ -1,16 +1,44 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classes from "./login.module.css"
-import { Link, useNavigate } from 'react-router'
+import { Link, useNavigate} from 'react-router'
+import axios from "axios"
+import { useState } from 'react'
+import { AuthContext } from '../../component/context/authContext.jsx'
 
 
 const Login = () => {
-  const navigate = useNavigate();
-  const login_cliked = () => {
-    // Handle login logic here
-    console.log("Login clicked");
-    navigate('/')
-  // Redirect to home page after login
-  }
+   const [inputs, setinput] = useState({
+     "username":"",
+     "password":""
+   })
+   const [error, seterror] = useState("")
+   const navigate = useNavigate()
+
+
+
+   const {login} =useContext(AuthContext)
+
+  
+   const handleChange = (e) => {
+      setinput((prev)=>({...prev, [e.target.name]: e.target.value}))
+   }
+   
+   
+   
+    const  login_cliked = async (e) => {
+      // Handle register logic he console.log("Register clicked");
+      e.preventDefault();
+      try {
+        // const res = await axios.post("http://localhost:5500/api/auth/login",input)
+
+       await login(inputs)
+        navigate('/')
+      } catch (error) {
+        console.log(error) 
+        seterror(error.response.data)
+        
+      }
+    }
 
 
   return (
@@ -21,8 +49,8 @@ const Login = () => {
         </div>
         <div className={classes.login_input}>
           <div className={classes.input}>
-            <input type="text" placeholder='username'  required/>
-            <input type="text" placeholder='password'  required/>
+            <input type="text" placeholder='username' name='username ' onChange={handleChange}  required/>
+            <input type="password" placeholder='password' name='password' onChange={handleChange} required/>
             <button onClick={login_cliked} >
                 Login
             </button>

@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import classes from './Header.module.css'
 import logo from "../../assets/Author.png"
 import write from '../../assets/Author (1).png'
+import { AuthContext } from '../context/authContext.jsx'
 
 const Header = () => {
+
+  const {currentUser ,logout} = useContext(AuthContext)
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Toggle function to show/hide menu
@@ -15,7 +18,10 @@ const Header = () => {
   return (
     <div className={classes.header}>
       <div className={classes.header_logo}>
+        
+        <Link to="/">
         <img src={logo} alt="logo" />
+        </Link>
       </div>
 
       {/* Hamburger menu toggle */}
@@ -33,8 +39,8 @@ const Header = () => {
         <Link to="/"><h6>CINEMA</h6></Link>
         <Link to="/"><h6>DESIGN</h6></Link>
         <Link to="/"><h6>FOOD</h6></Link>
-        <Link to="/"><h6>Ruth</h6></Link>
-        <Link to="/">Logout</Link>
+        <Link to="/"><h6>{currentUser?.username}</h6></Link>
+        {currentUser ?  <span onClick={logout}>Logout</span>: <Link className='link' to="/login">login</Link>}
         <Link to="/write" className={classes.header_links_img}>
           <img src={write} alt="write blog" />
         </Link>

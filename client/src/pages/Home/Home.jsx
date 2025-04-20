@@ -1,30 +1,50 @@
 import React from 'react'
 import './Home.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import axios from "axios"
+import { useState,useEffect } from 'react'
 
 const Home = () => {
-  const posts=[
-    {
-      img:"https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
-      title:"Hiking Ethipoian  mountains",   
-      desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      id:1  
+   const [posts, setPosts] = useState([])
 
-    },
-    {
-      img:"https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
-      title:"Hiking Ethipoian  mountains",   
-      desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      id:2 
+   const catag =useLocation().search
 
-    },
-    {
-      img:"https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
-      title:"Hiking Ethipoian  mountains",   
-      desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      id:3 
-    }
-  ]
+   useEffect(() => {
+     const fetchData = async()=>{
+       try {
+        const res = await axios.get(`/posts${catag}`)
+        setPosts(res.data)
+       } catch (error) {
+        console.log(error.mesaage)
+        res.send(error)
+       }
+       fetchData()
+     }
+   }, [catag])
+
+
+  // const posts=[
+  //   {
+  //     img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     title:"Hiking Ethipoian  mountains",   
+  //     desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
+  //     id:1  
+
+  //   },
+  //   {
+  //     img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dhttps://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+  //     title:"Hiking Ethipoian  mountains",   
+  //     desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
+  //     id:2 
+
+  //   },
+  //   {
+  //     img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     title:"Hiking Ethipoian  mountains",   
+  //     desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
+  //     id:3 
+  //   }
+  // ]
   return (
     <div className="home">
       <div className="home__container">

@@ -42,7 +42,7 @@ const Register = () => {
           <div className={classes.input}>
             <input type="text" placeholder='username'  name="username"  onChange={handleChange} required/>
             <input type="email" placeholder='email' name='email'  onChange={handleChange}  required/>
-            <input type="text" placeholder='password' name='password'  onChange={handleChange}  required/>
+            <input type="password" placeholder='password' name='password'  onChange={handleChange}  required/>
             <button onClick={handle_register}>
                 Register
             </button>

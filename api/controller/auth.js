@@ -1,7 +1,9 @@
 import { database } from "../db.js";
-import bycrpt from "bcryptjs"
+import bycrpt from "bcrypt"
 import jwt from "jsonwebtoken"
 
+
+//register
 export const register = (req,res)=>{
   const q = "SELECT * FOR users WHERE email = ? OR username = ?";
   const values = [req.body.email, req.body.username]
@@ -29,10 +31,30 @@ export const register = (req,res)=>{
 
 }
 
-export const login  =(req,res)=>{
-  res.json("login nicely ")
-}
 
-export const logout =(req,res)=>{
-  res.json("logout")
+// login 
+export const login  =(req,res)=>{
+  const q = "SELECT * FROM users WHERE username = '?':"
+  db.query(q,[req.body.username ],(err,data)=>{
+    if(err) return res.json(err);
+    if(data.length ===0 )return res.status(404).json("msg : user not found ")
+          //check password 
+    const passwordright =bycrpt.compareSync(req.body.password,data[0].password);
+    if (!passwordright) return res.status(400).json("password not correct ")
+     
+    const   token =jwt.sign({id: data[0].id},"jwtkey")
+    const {password, ...other}=data[0]
+
+    res.cookie("access_token ", token ,{
+      httpOnly: true
+        }).status(200).json(other)
+  }) 
+
 }
+//  logOut
+export const logout =(req,res)=>{
+   res.clearCookie("access_token",{
+    sameSite:"none",
+    secure:true
+   }).status(200).json("user has log out ")
+  }

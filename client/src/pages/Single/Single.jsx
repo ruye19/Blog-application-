@@ -11,6 +11,24 @@ import Menu from '../../component/Menu/Menu'
 // Usage:
 
 const single = () => {
+ const [posts, setPosts] = useState([])
+ 
+    const catag =useLocation().search
+ 
+    useEffect(() => {
+      const fetchData = async()=>{
+        try {
+         const res = await axios.get(`/posts${catag}`)
+         setPosts(res.data)
+        } catch (error) {
+         console.log(error.mesaage)
+         res.send(error)
+        }
+        fetchData()
+      }
+    }, [catag])
+  
+
   return (
     <div className="single">
       <div className="content">

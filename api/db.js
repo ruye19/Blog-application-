@@ -9,7 +9,7 @@ export const database=mysql2.createConnection({
 })
 
 database.connect((err)=>{
-    if(err) throw err
+    if(err) throw err.message
     console.log("Connected to database")
 })
 
