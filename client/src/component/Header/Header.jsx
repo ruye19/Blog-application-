@@ -33,13 +33,13 @@ const Header = () => {
 
       {/* Links */}
       <div className={`${classes.header_links} ${menuOpen ? classes.active : ''}`}>
-        <Link to="/"><h6>ART</h6></Link>
-        <Link to="/"><h6>SCIENCE</h6></Link>
-        <Link to="/"><h6>TECHNOLOGY</h6></Link>
-        <Link to="/"><h6>CINEMA</h6></Link>
-        <Link to="/"><h6>DESIGN</h6></Link>
-        <Link to="/"><h6>FOOD</h6></Link>
-        <Link to="/"><h6>{currentUser?.username}</h6></Link>
+        <Link to="/?catagory=Art"><h6>ART</h6></Link>
+        <Link to="/?catagory=Science"><h6>SCIENCE</h6></Link>
+        <Link to="/?catagory=Technology"><h6>TECHNOLOGY</h6></Link>
+        <Link to="/?catagory=Cinema"><h6>CINEMA</h6></Link>
+        <Link to="/?catagory=Design"><h6>DESIGN</h6></Link>
+        <Link to="/?catagory=Food"><h6>FOOD</h6></Link>
+        <p ><h6>{currentUser?.username}</h6></p>
         {currentUser ?  <span onClick={logout}>Logout</span>: <Link className='link' to="/login">login</Link>}
         <Link to="/write" className={classes.header_links_img}>
           <img src={write} alt="write blog" />

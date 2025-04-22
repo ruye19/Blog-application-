@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classes from "./register.module.css"
 import { Link, useNavigate } from 'react-router'
-
+import axios from 'axios'
 const Register = () => {
  
  const [input, setinput] = useState({
@@ -27,7 +27,7 @@ const Register = () => {
       navigate('/login')
     } catch (error) {
       console.log(error) 
-      seterror(error.response.data)
+      seterror(error.response)
       
     }
   }

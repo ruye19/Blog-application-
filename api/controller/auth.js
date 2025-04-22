@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 
 //register
 export const register = (req,res)=>{
-  const q = "SELECT * FOR users WHERE email = ? OR username = ?";
+  const q = "SELECT * FROM users WHERE email = ? OR username = ?";
   const values = [req.body.email, req.body.username]
 
   database.query(q,[values],(err,data)=>{
@@ -35,7 +35,7 @@ export const register = (req,res)=>{
 // login 
 export const login  =(req,res)=>{
   const q = "SELECT * FROM users WHERE username = '?':"
-  db.query(q,[req.body.username ],(err,data)=>{
+  database.query(q,[req.body.username ],(err,data)=>{
     if(err) return res.json(err);
     if(data.length ===0 )return res.status(404).json("msg : user not found ")
           //check password 

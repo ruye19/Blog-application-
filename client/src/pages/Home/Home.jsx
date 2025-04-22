@@ -12,7 +12,7 @@ const Home = () => {
    useEffect(() => {
      const fetchData = async()=>{
        try {
-        const res = await axios.get(`/posts${catag}`)
+        const res = await axios.get(`http://localhost:5500/posts${catag}`)
         setPosts(res.data)
        } catch (error) {
         console.log(error.mesaage)
@@ -45,6 +45,12 @@ const Home = () => {
   //     id:3 
   //   }
   // ]
+
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html,"text/html")
+    return doc.body.textContent
+}
+
   return (
     <div className="home">
       <div className="home__container">
@@ -57,13 +63,13 @@ const Home = () => {
         {posts.map((post) => (
             <div className="post" key={post.id}>
                 <div className='post__img'>
-                    <Link to={`/post/${post.id}`}><img src={post.img} alt="" /></Link>
+                    <Link ><img src={`./upload/${post.img}`} alt="" /></Link>
                 </div>
                 <div className="post__info">
-                    <Link className="post__title" to={`/post/${post.id}`}>
+                    <Link className="post__title" >
                         <h2>{post.title}</h2>
                     </Link>
-                    <p>{post.desc}</p>
+                    <p>{getText(post.desc)}</p>
                     <button className='btn__readmore'>Read More</button>
                 </div>
             </div>
