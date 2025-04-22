@@ -24,8 +24,6 @@ filename: function (req,file,cb){
 
 })
 
-
-// dont forget multer download
 const upload = multer(storage)
  app.post("/api/upload" , upload.single('file'),function(req,res){
   const file = req.file
